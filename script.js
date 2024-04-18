@@ -1,8 +1,28 @@
 const gameBoard = ( function(){
-    console.log('game board');
+    let array = [ 
+        ['blank','blank','blank' ],
+        ['blank','blank','blank' ],
+        ['blank','blank','blank' ]
+    ];
+
+    return {array};
 }
 )();
 
 const displayController = ( function(){
-    console.log( 'display');
 })();
+
+
+function createPlayer( name , symbol){
+
+    let playerSymbol = symbol;
+    let playerName = name;
+
+    let getSymbol = () => playerSymbol;
+    let getPlayerName = () => playerName;
+
+    return { getSymbol, getPlayerName };
+}
+
+let x = createPlayer('didier', 'X');
+let o = createPlayer( 'emily', 'O');
