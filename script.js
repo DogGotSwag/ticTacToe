@@ -5,7 +5,12 @@ const gameBoard = ( function(){
         ['blank','blank','blank' ]
     ];
 
-    return {array};
+    let setPos = ( row, col , symbol) => {
+        array[row][col] = symbol;
+    }
+
+
+    return {setPos , array};
 }
 )();
 
@@ -26,3 +31,9 @@ function createPlayer( name , symbol){
 
 let x = createPlayer('didier', 'X');
 let o = createPlayer( 'emily', 'O');
+
+gameBoard.setPos( 2, 0, x.getSymbol());
+
+console.log( gameBoard.array[0]);
+console.log( gameBoard.array[1]);
+console.log( gameBoard.array[2]);
