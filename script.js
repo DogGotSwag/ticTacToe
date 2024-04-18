@@ -1,3 +1,15 @@
+function createPlayer( name , symbol){
+
+    let playerSymbol = symbol;
+    let playerName = name;
+
+    let getSymbol = () => playerSymbol;
+    let getPlayerName = () => playerName;
+
+    return { getSymbol, getPlayerName };
+}
+
+
 const gameBoard = ( function(){
     let array = [ 
         ['blank','blank','blank' ],
@@ -61,41 +73,24 @@ const gameBoard = ( function(){
 }
 )();
 
-const displayController = ( function(){
-})();
+const gameFlow = ( function(){
+
+    let moves = 0
+    let playerOne = createPlayer( 'emily', 'O');
+
+    let PlayerTwo = createPlayer('didier', 'X');
+
+    while( moves < 10){
+        let currentTurn =  ( moves % 2 == 0) ? PlayerTwo.getSymbol() : playerOne.getSymbol(); 
+        
+        let columns = prompt( 'cols');
+        let row = prompt( 'rows');
 
 
-function createPlayer( name , symbol){
 
-    let playerSymbol = symbol;
-    let playerName = name;
+        moves++;
+    }
 
-    let getSymbol = () => playerSymbol;
-    let getPlayerName = () => playerName;
-
-    return { getSymbol, getPlayerName };
-}
-
-let x = createPlayer('didier', 'X');
-let o = createPlayer( 'emily', 'O');
-
-gameBoard.setPos( 0, 0, o.getSymbol());
-
-gameBoard.setPos( 1, 1, o.getSymbol());
-
-gameBoard.setPos( 2, 0, o.getSymbol());
-gameBoard.setPos( 2, 1, x.getSymbol());
-
-gameBoard.setPos( 1, 0, x.getSymbol());
-
-gameBoard.setPos( 0, 2, o.getSymbol())
-
-console.log( gameBoard.array[0]);
-console.log( gameBoard.array[1]);
-console.log( gameBoard.array[2]);
-
-console.log("\n");
-
-console.log( gameBoard.checkIfWinner( o.getSymbol(), x.getSymbol()));
+})( gameBoard , createPlayer);
 
 
