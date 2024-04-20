@@ -1,0 +1,36 @@
+body, html{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(23, 22, 22);
+}
+
+body{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.game-area{
+    background-color: rgb(233, 233, 233);
+    border-radius: 19px;
+    height: 500px;
+    width: 500px;
+    padding: 10px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.symbol-area{
+    background-color: rgb(29, 122, 122);
+
+    height: 160px;
+    width: 160px;
+    border-radius: 19px;
+}
