@@ -69,28 +69,34 @@ const gameBoard = ( function(){
 
     }
 
-    return {setPos , checkIfWinner, array};
+    return {setPos , checkIfWinner};
 }
 )();
 
-const gameFlow = ( function(){
+const gameFlow = function(){
 
     let moves = 0
     let playerOne = createPlayer( 'emily', 'O');
 
-    let PlayerTwo = createPlayer('didier', 'X');
+    let playerTwo = createPlayer('didier', 'X');
 
-    while( moves < 10){
-        let currentTurn =  ( moves % 2 == 0) ? PlayerTwo.getSymbol() : playerOne.getSymbol(); 
-        
-        let columns = prompt( 'cols');
-        let row = prompt( 'rows');
+    let playNextMove = (row , cols) => {
+        if( (moves % 2) == 0){
+            gameBoard.setPos( row, cols , playerTwo.getSymbol() );
+        }
+        else{
+            gameBoard.setPos( row, cols , playerOne.getSymbol() );
+        }
 
-
-
-        moves++;
     }
 
-})( gameBoard , createPlayer);
+    
+
+
+    return { playNextMove, };
+}
+
+
+
 
 
