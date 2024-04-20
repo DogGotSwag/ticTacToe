@@ -17,12 +17,9 @@ const gameBoard = ( function(){
         ['blank','blank','blank' ]
     ];
 
-    let resetArray = () =>{
-        array = [ 
-            ['blank','blank','blank' ],
-            ['blank','blank','blank' ],
-            ['blank','blank','blank' ]
-        ];
+    let getArray = () =>{
+        let copy = array;
+        return copy;
     }
 
     let displayBoard = () => {
@@ -84,7 +81,7 @@ const gameBoard = ( function(){
 
     }
 
-    return {setPos , checkIfWinner, resetArray , displayBoard};
+    return {setPos , checkIfWinner, getArray , displayBoard};
 }
 )();
 
@@ -95,16 +92,33 @@ const gameFlow = function(){
 
     let playerTwo = createPlayer('didier', 'X');
 
+    let displayBoard = () => {
+        let currentStateOfGame = gameBoard.getArray();
+        console.log( currentStateOfGame[0] );
+        console.log( currentStateOfGame[1] );
+        console.log( currentStateOfGame[2] );
+
+    }
+
     let playNextMove = (row , cols) => {
+        ++moves;
         if( (moves % 2) == 0){
             gameBoard.setPos( row, cols , playerTwo.getSymbol() );
         }
         else{
             gameBoard.setPos( row, cols , playerOne.getSymbol() );
         }
+
+        displayBoard();
+
+
     }
     return { playNextMove };
 }
+
+
+let game = gameFlow();
+game.playNextMove( 0, 0);
 
 
 
