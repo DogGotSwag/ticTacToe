@@ -17,6 +17,21 @@ const gameBoard = ( function(){
         ['blank','blank','blank' ]
     ];
 
+    let resetArray = () =>{
+        array = [ 
+            ['blank','blank','blank' ],
+            ['blank','blank','blank' ],
+            ['blank','blank','blank' ]
+        ];
+    }
+
+    let displayBoard = () => {
+        console.log(array[0]);
+        console.log(array[1]);
+        console.log(array[2]);
+
+    }
+
     let setPos = ( row, col , symbol) => {
         if( array[row][col] == 'blank' ){
             array[row][col] = symbol;
@@ -69,7 +84,7 @@ const gameBoard = ( function(){
 
     }
 
-    return {setPos , checkIfWinner};
+    return {setPos , checkIfWinner, resetArray , displayBoard};
 }
 )();
 
@@ -87,13 +102,8 @@ const gameFlow = function(){
         else{
             gameBoard.setPos( row, cols , playerOne.getSymbol() );
         }
-
     }
-
-    
-
-
-    return { playNextMove, };
+    return { playNextMove };
 }
 
 
