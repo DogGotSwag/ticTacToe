@@ -137,26 +137,31 @@ let displayController = ( function(){
                 symbolIndex++;
             }
         }
-        
+
+        symbolIndex = 0;
     }
+
 
     return{ changeDomToCurrentBoard};
 })();
 
 
 let symbolBoxes = document.querySelectorAll('.symbol-area');
+let game = gameFlow();
 
 symbolBoxes.forEach( key => {
-    key.addEventListener( 'click', () =>{
-        alert('click');
+    key.addEventListener( 'click', ( event ) =>{
+        let squareClicked = event.target;
+        let row = squareClicked.classList[1];
+        let col = squareClicked.classList[2];
+        if(squareClicked.classList[1] == 'zero') row = 0;
+
+        else if( squareClicked.classList[1] == 'one') row = 1;
+        else row = 2; 
+
+        game.playNextMove(row, col );
+        displayController.changeDomToCurrentBoard();
+
     });
 });
 
-displayController.changeDomToCurrentBoard();
-
-// let game = gameFlow();
-// game.playNextMove( 0, 0);
-// game.playNextMove( 1, 0);
-// game.playNextMove( 1, 1);
-// game.playNextMove( 2, 0);
-// game.playNextMove( 2, 2);
