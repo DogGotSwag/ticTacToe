@@ -63,16 +63,16 @@ const gameBoard = ( function(){
 
         //check for diagonals 
 
-        if( (array[0][0] = symbolOne) && (array[1][1] == symbolOne) && (array[2][2] == symbolOne)){
+        if( (array[0][0] == symbolOne) && (array[1][1] == symbolOne) && (array[2][2] == symbolOne)){
             isThereWinner = true;
         }
-        else if( (array[0][0] = symbolTwo) && (array[1][1] == symbolTwo) && (array[2][2] == symbolTwo)){
+        else if( (array[0][0] == symbolTwo) && (array[1][1] == symbolTwo) && (array[2][2] == symbolTwo)){
             isThereWinner = true;
         }
-        else if( (array[0][2] = symbolOne) && (array[1][1] == symbolOne) && (array[2][0] == symbolOne)){
+        else if( (array[0][2] == symbolOne) && (array[1][1] == symbolOne) && (array[2][0] == symbolOne)){
             isThereWinner = true;
         }
-        else if( (array[0][2] = symbolTwo) && (array[1][1] == symbolTwo) && (array[2][0] == symbolTwo)){
+        else if( (array[0][2] == symbolTwo) && (array[1][1] == symbolTwo) && (array[2][0] == symbolTwo)){
             isThereWinner = true;
         }
 
@@ -94,6 +94,7 @@ const gameFlow = function(){
 
     let displayBoard = () => {
         let currentStateOfGame = gameBoard.getArray();
+        console.clear();
         console.log( currentStateOfGame[0] );
         console.log( currentStateOfGame[1] );
         console.log( currentStateOfGame[2] );
@@ -111,6 +112,9 @@ const gameFlow = function(){
 
         displayBoard();
 
+        console.log(gameBoard.checkIfWinner( playerOne.getSymbol(), playerTwo.getSymbol() ) );
+
+
 
     }
     return { playNextMove };
@@ -119,6 +123,15 @@ const gameFlow = function(){
 
 let game = gameFlow();
 game.playNextMove( 0, 0);
+game.playNextMove( 1, 0);
+game.playNextMove( 1, 1);
+game.playNextMove( 2, 0);
+game.playNextMove( 2, 2);
+
+
+
+
+
 
 
 
