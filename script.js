@@ -121,9 +121,35 @@ const gameFlow = function(){
 }
 
 
-let game = gameFlow();
-game.playNextMove( 0, 0);
-game.playNextMove( 1, 0);
-game.playNextMove( 1, 1);
-game.playNextMove( 2, 0);
-game.playNextMove( 2, 2);
+let displayController = ( function(){
+
+    let symbolBoxes = Array.from(document.querySelectorAll('.symbol-area'));
+    let currentBoard = gameBoard.getArray();
+
+    let changeDomToCurrentBoard = () => {
+        for( let i = 0; i < 9; i++){
+            symbolBoxes[i].innerText = ;
+        }
+        
+    }
+
+    return{ changeDomToCurrentBoard};
+})();
+
+
+let symbolBoxes = document.querySelectorAll('.symbol-area');
+
+symbolBoxes.forEach( key => {
+    key.addEventListener( 'click', () =>{
+        alert('click');
+    });
+});
+
+displayController.changeDomToCurrentBoard();
+
+// let game = gameFlow();
+// game.playNextMove( 0, 0);
+// game.playNextMove( 1, 0);
+// game.playNextMove( 1, 1);
+// game.playNextMove( 2, 0);
+// game.playNextMove( 2, 2);
