@@ -126,9 +126,16 @@ let displayController = ( function(){
     let symbolBoxes = Array.from(document.querySelectorAll('.symbol-area'));
     let currentBoard = gameBoard.getArray();
 
+    let symbolIndex = 0;
     let changeDomToCurrentBoard = () => {
-        for( let i = 0; i < 9; i++){
-            symbolBoxes[i].innerText = ;
+        for( let i = 0; i < 3; i++){
+
+            for( j = 0; j < 3; j++){
+                if(currentBoard[i][j] != 'blank'){
+                    symbolBoxes[symbolIndex].innerText = currentBoard[i][j];
+                }
+                symbolIndex++;
+            }
         }
         
     }
