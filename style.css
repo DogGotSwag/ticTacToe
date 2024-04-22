@@ -7,11 +7,42 @@ body, html{
 }
 
 body{
-    display: grid;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.inputSec{
+    margin-bottom: 13px;
+    width: 520px;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.inputSec input{
+    height: 20px;
+    appearance: none;
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid whitesmoke;
+    padding: 3px 7px;
+    background-color: rgb(88, 88, 87);
+    color: aliceblue;
+    font-size: 16px;
+}
+
+.inputSec div{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+label{
+    color: whitesmoke;
+}
 
 .game-area{
     background-color: rgb(233, 233, 233);
