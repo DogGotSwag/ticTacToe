@@ -30,6 +30,9 @@ body{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+
+    visibility: hidden;
+    position:absolute;
 }
 
 .inputSec input{
@@ -66,6 +69,9 @@ label{
     justify-items: center;
     align-items: center;
     gap: 10px;
+    
+    visibility: hidden;
+    position:absolute;
 }
 
 .symbol-area{
