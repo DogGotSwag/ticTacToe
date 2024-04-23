@@ -37,15 +37,15 @@ const gameBoard = ( function(){
 
     let checkIfWinner = (symbolOne, symbolTwo) => {
 
-        let isThereWinner = false;
+        let winner = '';
 
         //checks for row winner
         for( let i = 0 ; i < 3; i++){
             if( (array[i][0] == symbolOne) && (array[i][1] == symbolOne) && ( array[i][2] == symbolOne) ){
-                isThereWinner = true;
+                winner = symbolOne;
             }
             else if( (array[i][0] == symbolTwo) && (array[i][1] == symbolTwo) && ( array[i][2] == symbolTwo) ) {
-                isThereWinner = true;
+                winner = symbolTwo;
             }
         }
 
@@ -53,31 +53,31 @@ const gameBoard = ( function(){
 
         for ( let i = 0; i < 3; i++){
             if( (array[0][i] == symbolOne) && (array[1][i] == symbolOne) && (array[2][i] == symbolOne) ){
-                isThereWinner = true;
+                winner = symbolOne;
             }
 
             else if( (array[0][i] == symbolTwo) && (array[1][i] == symbolTwo) && (array[2][i] == symbolTwo) ){
-                isThereWinner = true;
+                winner = symbolTwo;
             }
         }
 
         //check for diagonals 
 
         if( (array[0][0] == symbolOne) && (array[1][1] == symbolOne) && (array[2][2] == symbolOne)){
-            isThereWinner = true;
+            winner = symbolOne;
         }
         else if( (array[0][0] == symbolTwo) && (array[1][1] == symbolTwo) && (array[2][2] == symbolTwo)){
-            isThereWinner = true;
+            winner = symbolTwo;
         }
         else if( (array[0][2] == symbolOne) && (array[1][1] == symbolOne) && (array[2][0] == symbolOne)){
-            isThereWinner = true;
+            winner = symbolOne;
         }
         else if( (array[0][2] == symbolTwo) && (array[1][1] == symbolTwo) && (array[2][0] == symbolTwo)){
-            isThereWinner = true;
+            winner = symbolOne;
         }
 
 
-        return isThereWinner;
+        return winner;
 
     }
 
@@ -92,6 +92,8 @@ const gameFlow = function(){
 
     let playerTwo = createPlayer('didier', 'X');
 
+    let isThereWinner = false;
+
     let displayBoard = () => {
         let currentStateOfGame = gameBoard.getArray();
         console.clear();
@@ -103,16 +105,22 @@ const gameFlow = function(){
 
     let playNextMove = (row , cols) => {
         ++moves;
-        if( (moves % 2) == 0){
-            gameBoard.setPos( row, cols , playerTwo.getSymbol() );
-        }
-        else{
-            gameBoard.setPos( row, cols , playerOne.getSymbol() );
-        }
+        if( !isThereWinner ){
+            if( (moves % 2) == 0){
+                gameBoard.setPos( row, cols , playerTwo.getSymbol() );
+            }
+            else{
+                gameBoard.setPos( row, cols , playerOne.getSymbol() );
+            }
+    
+            displayBoard();
 
-        displayBoard();
-
-        console.log(gameBoard.checkIfWinner( playerOne.getSymbol(), playerTwo.getSymbol() ) );
+            if( gameBoard.checkIfWinner( playerOne.getSymbol(), playerTwo.getSymbol() ) != '' ){
+                isThereWinner = true;
+            }
+            
+        }
+        
 
 
 
