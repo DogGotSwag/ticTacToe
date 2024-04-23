@@ -145,8 +145,15 @@ let displayController = ( function(){
     let startButton = document.querySelector('.start');
     let body = document.querySelector('body');
 
+    let inputSec = document.querySelector('.inputSec');
+    let gameSec = document.querySelector('.game-area');
+
     startButton.addEventListener( 'click', () =>{
         body.removeChild(startButton);
+
+        inputSec.style.cssText = 'position: static; visibility:visible';
+        gameSec.style.cssText = 'position: static; visibility:visible';
+
     });
 
     return{ changeDomToCurrentBoard};
