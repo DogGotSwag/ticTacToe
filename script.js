@@ -142,8 +142,15 @@ let displayController = ( function(){
     }
 
 
+    let startButton = document.querySelector('.start');
+    let body = document.querySelector('body');
+
+    startButton.addEventListener( 'click', () =>{
+        body.removeChild(startButton);
+    });
+
     return{ changeDomToCurrentBoard};
-})();
+})(document);
 
 
 let symbolBoxes = document.querySelectorAll('.symbol-area');
@@ -164,4 +171,6 @@ symbolBoxes.forEach( key => {
 
     });
 });
+
+
 
