@@ -120,6 +120,8 @@ const gameFlow = function(){
     return { playNextMove };
 }
 
+let game = gameFlow();
+
 
 let displayController = ( function(){
 
@@ -147,23 +149,20 @@ let displayController = ( function(){
 
     let inputSec = document.querySelector('.inputSec');
     let gameSec = document.querySelector('.game-area');
+    let resultsBox = document.querySelector('.resultsBox');
 
     startButton.addEventListener( 'click', () =>{
         body.removeChild(startButton);
 
         inputSec.style.cssText = 'position: static; visibility:visible';
         gameSec.style.cssText = 'position: static; visibility:visible';
+        resultsBox.style.cssText = 'position: static; visibility:visible';
 
     });
 
-    return{ changeDomToCurrentBoard};
-})(document);
+    let boxes = document.querySelectorAll('.symbol-area');
 
-
-let symbolBoxes = document.querySelectorAll('.symbol-area');
-let game = gameFlow();
-
-symbolBoxes.forEach( key => {
+    boxes.forEach( key => {
     key.addEventListener( 'click', ( event ) =>{
         let squareClicked = event.target;
         let row = squareClicked.classList[1];
@@ -179,5 +178,7 @@ symbolBoxes.forEach( key => {
     });
 });
 
+    return{ changeDomToCurrentBoard};
+})(document, game);
 
 

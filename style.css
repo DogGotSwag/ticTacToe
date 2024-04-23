@@ -69,6 +69,8 @@ label{
     justify-items: center;
     align-items: center;
     gap: 10px;
+
+    margin-bottom: 13px;
     
     visibility: hidden;
     position:absolute;
@@ -84,4 +86,16 @@ label{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+.resultsBox{
+    border: 3px solid whitesmoke;
+    border-radius: 19px;
+    width: 240px;
+    padding: 10px;
+    color: whitesmoke;
+
+    visibility: hidden;
+    position:absolute;
 }
