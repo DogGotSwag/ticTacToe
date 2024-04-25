@@ -184,9 +184,21 @@ let displayController = ( function(){
         displayController.changeDomToCurrentBoard();
 
     });
+
+
+    let resultsText = document.querySelector('.theResults');
+    
+    let updateResults = (winner) => {
+        if( winner == ''){
+            resultsBox.innerText = 'It\'s a tie';
+        }
+        else{
+            resultsBox.innerText = `The winner is ${winner}`;
+        }
+    }
 });
 
-    return{ changeDomToCurrentBoard};
+    return{ changeDomToCurrentBoard , updateResults };
 })(document, game);
 
 
