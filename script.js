@@ -85,12 +85,12 @@ const gameBoard = ( function(){
 }
 )();
 
-const gameFlow = function(){
+const gameFlow = function( oName, xName){
 
     let moves = 0
-    let playerOne = createPlayer( 'emily', 'O');
+    let playerOne = createPlayer( oName, 'O');
 
-    let playerTwo = createPlayer('didier', 'X');
+    let playerTwo = createPlayer( xName, 'X');
 
     let isThereWinner = false;
 
@@ -122,10 +122,10 @@ const gameFlow = function(){
         }
         if( isThereWinner){
             if( (moves % 2) == 0){
-                displayController.updateResults( playerTwo.getSymbol());
+                displayController.updateResults( playerTwo.getPlayerName());
             }
             else{
-                displayController.updateResults(playerOne.getSymbol());
+                displayController.updateResults(playerOne.getPlayerName());
             }
         }
         else if( moves == 9){
@@ -138,7 +138,6 @@ const gameFlow = function(){
     return { playNextMove };
 }
 
-let game = gameFlow();
 
 
 let displayController = ( function(){
@@ -172,12 +171,17 @@ let displayController = ( function(){
     let gameSec = document.querySelector('.game-area');
     let resultsBox = document.querySelector('.resultsBox');
 
+    let game = Object;
+
+
     startButton.addEventListener( 'click', () =>{
         if( (oInput.value !== '') && (xInput.value !== '') ){
             body.removeChild(startButton);
             inputSec.style.cssText = 'position: absolute; visibility: hidden';
             gameSec.style.cssText = 'position: static; visibility:visible';
             resultsBox.style.cssText = 'position: static; visibility:visible';
+            game = gameFlow( oInput.value, xInput.value);
+
         }
         else{
             alert('stop your tomfoolery and input your names');
@@ -216,6 +220,6 @@ let displayController = ( function(){
     }
 
     return{ changeDomToCurrentBoard , updateResults };
-})(document, game);
+})(document);
 
 
