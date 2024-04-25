@@ -120,7 +120,17 @@ const gameFlow = function(){
             }
             
         }
-        
+        if( isThereWinner){
+            if( (moves % 2) == 0){
+                displayController.updateResults( playerTwo.getSymbol());
+            }
+            else{
+                displayController.updateResults(playerOne.getSymbol());
+            }
+        }
+        else if( moves == 9){
+            displayController.updateResults('');
+        }
 
 
 
@@ -171,32 +181,31 @@ let displayController = ( function(){
     let boxes = document.querySelectorAll('.symbol-area');
 
     boxes.forEach( key => {
-    key.addEventListener( 'click', ( event ) =>{
-        let squareClicked = event.target;
-        let row = squareClicked.classList[1];
-        let col = squareClicked.classList[2];
-        if(squareClicked.classList[1] == 'zero') row = 0;
+        key.addEventListener( 'click', ( event ) =>{
+            let squareClicked = event.target;
+            let row = squareClicked.classList[1];
+            let col = squareClicked.classList[2];
+            if(squareClicked.classList[1] == 'zero') row = 0;
 
-        else if( squareClicked.classList[1] == 'one') row = 1;
-        else row = 2; 
+            else if( squareClicked.classList[1] == 'one') row = 1;
+            else row = 2; 
 
-        game.playNextMove(row, col );
-        displayController.changeDomToCurrentBoard();
+            game.playNextMove(row, col );
+            displayController.changeDomToCurrentBoard();
 
+        });
     });
 
-
     let resultsText = document.querySelector('.theResults');
-    
+
     let updateResults = (winner) => {
         if( winner == ''){
-            resultsBox.innerText = 'It\'s a tie';
+            resultsText.innerText = 'It\'s a tie';
         }
         else{
-            resultsBox.innerText = `The winner is ${winner}`;
+            resultsText.innerText = `The winner is ${winner}`;
         }
     }
-});
 
     return{ changeDomToCurrentBoard , updateResults };
 })(document, game);
