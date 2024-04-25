@@ -170,6 +170,7 @@ let displayController = ( function(){
 
     let gameSec = document.querySelector('.game-area');
     let resultsBox = document.querySelector('.resultsBox');
+    let restartButton = document.querySelector('.restartButton');
 
     let game = Object;
 
@@ -180,6 +181,8 @@ let displayController = ( function(){
             inputSec.style.cssText = 'position: absolute; visibility: hidden';
             gameSec.style.cssText = 'position: static; visibility:visible';
             resultsBox.style.cssText = 'position: static; visibility:visible';
+            restartButton.style.cssText = 'position: static; visibility:visible';
+
             game = gameFlow( oInput.value, xInput.value);
 
         }
