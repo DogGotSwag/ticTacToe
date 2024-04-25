@@ -166,15 +166,23 @@ let displayController = ( function(){
     let body = document.querySelector('body');
 
     let inputSec = document.querySelector('.inputSec');
+    let oInput = document.querySelector('#o');
+    let xInput = document.querySelector('#x');
+
     let gameSec = document.querySelector('.game-area');
     let resultsBox = document.querySelector('.resultsBox');
 
     startButton.addEventListener( 'click', () =>{
-        body.removeChild(startButton);
-
-        inputSec.style.cssText = 'position: static; visibility:visible';
-        gameSec.style.cssText = 'position: static; visibility:visible';
-        resultsBox.style.cssText = 'position: static; visibility:visible';
+        if( (oInput.value !== '') && (xInput.value !== '') ){
+            body.removeChild(startButton);
+            inputSec.style.cssText = 'position: absolute; visibility: hidden';
+            gameSec.style.cssText = 'position: static; visibility:visible';
+            resultsBox.style.cssText = 'position: static; visibility:visible';
+        }
+        else{
+            alert('stop your tomfoolery and input your names');
+        }
+        
 
     });
 
