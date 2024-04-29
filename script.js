@@ -150,17 +150,19 @@ const gameFlow = function( oName, xName){
 
 let displayController = ( function(){
     let symbolBoxes = Array.from(document.querySelectorAll('.symbol-area'));
-    let currentBoard = gameBoard.getArray();
 
     let symbolIndex = 0;
     let changeDomToCurrentBoard = () => {
-        alert('used');
+        let currentBoard = gameBoard.getArray();
 
         for( let i = 0; i < 3; i++){
 
             for( j = 0; j < 3; j++){
                 if(currentBoard[i][j] != 'blank'){
                     symbolBoxes[symbolIndex].innerText = currentBoard[i][j];
+                }
+                else if(currentBoard[i][j] == 'blank'){
+                    symbolBoxes[symbolIndex].innerText = '';
                 }
                 symbolIndex++;
             }
@@ -232,7 +234,8 @@ let displayController = ( function(){
     }
 
     restartButton.addEventListener('click', () =>{
-        alert('pressed');
+        gameBoard.resetTheBoard();
+        displayController.changeDomToCurrentBoard();
     });
 
     return{ changeDomToCurrentBoard , updateResults };
