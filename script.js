@@ -140,10 +140,16 @@ const gameFlow = function( oName, xName){
             displayController.updateResults('');
         }
 
-
-
+        
     }
-    return { playNextMove };
+
+    let resetTheGame = () =>{
+        moves = 0;
+        isThereWinner = false;
+    }
+
+
+    return { playNextMove, resetTheGame };
 }
 
 
@@ -228,6 +234,9 @@ let displayController = ( function(){
         if( winner == ''){
             resultsText.innerText = 'It\'s a tie';
         }
+        else if( winner == 'blank'){
+            resultsText.innerText = "";
+        }
         else{
             resultsText.innerText = `The winner is ${winner}`;
         }
@@ -236,6 +245,8 @@ let displayController = ( function(){
     restartButton.addEventListener('click', () =>{
         gameBoard.resetTheBoard();
         displayController.changeDomToCurrentBoard();
+        game.resetTheGame();
+        displayController.updateResults('blank');
     });
 
     return{ changeDomToCurrentBoard , updateResults };
