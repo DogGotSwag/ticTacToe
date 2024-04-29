@@ -222,6 +222,10 @@ let displayController = ( function(){
         }
     }
 
+    restartButton.addEventListener('click', () =>{
+        alert('pressed');
+    });
+
     return{ changeDomToCurrentBoard , updateResults };
 })(document);
 
