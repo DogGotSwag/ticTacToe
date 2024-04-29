@@ -17,6 +17,14 @@ const gameBoard = ( function(){
         ['blank','blank','blank' ]
     ];
 
+    let resetTheBoard = () =>{
+        array = [ 
+            ['blank','blank','blank' ],
+            ['blank','blank','blank' ],
+            ['blank','blank','blank' ]
+        ];    
+    }
+
     let getArray = () =>{
         let copy = array;
         return copy;
@@ -81,7 +89,7 @@ const gameBoard = ( function(){
 
     }
 
-    return {setPos , checkIfWinner, getArray , displayBoard};
+    return {setPos , checkIfWinner, getArray , displayBoard, resetTheBoard};
 }
 )();
 
@@ -104,8 +112,8 @@ const gameFlow = function( oName, xName){
     }
 
     let playNextMove = (row , cols) => {
-        ++moves;
         if( !isThereWinner ){
+            ++moves;
             if( (moves % 2) == 0){
                 gameBoard.setPos( row, cols , playerTwo.getSymbol() );
             }
@@ -141,12 +149,13 @@ const gameFlow = function( oName, xName){
 
 
 let displayController = ( function(){
-
     let symbolBoxes = Array.from(document.querySelectorAll('.symbol-area'));
     let currentBoard = gameBoard.getArray();
 
     let symbolIndex = 0;
     let changeDomToCurrentBoard = () => {
+        alert('used');
+
         for( let i = 0; i < 3; i++){
 
             for( j = 0; j < 3; j++){
