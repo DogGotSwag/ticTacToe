@@ -96,9 +96,9 @@ const gameBoard = ( function(){
 const gameFlow = function( oName, xName){
 
     let moves = 0
-    let playerOne = createPlayer( oName, 'O');
+    let playerOne = createPlayer( oName, '〇');
 
-    let playerTwo = createPlayer( xName, 'X');
+    let playerTwo = createPlayer( xName, '✖');
 
     let isThereWinner = false;
 
