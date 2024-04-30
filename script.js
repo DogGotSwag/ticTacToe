@@ -30,13 +30,6 @@ const gameBoard = ( function(){
         return copy;
     }
 
-    let displayBoard = () => {
-        console.log(array[0]);
-        console.log(array[1]);
-        console.log(array[2]);
-
-    }
-
     let setPos = ( row, col , symbol) => {
         if( array[row][col] == 'blank' ){
             array[row][col] = symbol;
@@ -89,7 +82,7 @@ const gameBoard = ( function(){
 
     }
 
-    return {setPos , checkIfWinner, getArray , displayBoard, resetTheBoard};
+    return {setPos , checkIfWinner, getArray, resetTheBoard};
 }
 )();
 
@@ -102,15 +95,6 @@ const gameFlow = function( oName, xName){
 
     let isThereWinner = false;
 
-    let displayBoard = () => {
-        let currentStateOfGame = gameBoard.getArray();
-        console.clear();
-        console.log( currentStateOfGame[0] );
-        console.log( currentStateOfGame[1] );
-        console.log( currentStateOfGame[2] );
-
-    }
-
     let playNextMove = (row , cols) => {
         if( !isThereWinner ){
             ++moves;
@@ -121,8 +105,6 @@ const gameFlow = function( oName, xName){
                 gameBoard.setPos( row, cols , playerOne.getSymbol() );
             }
     
-            displayBoard();
-
             if( gameBoard.checkIfWinner( playerOne.getSymbol(), playerTwo.getSymbol() ) != '' ){
                 isThereWinner = true;
             }
