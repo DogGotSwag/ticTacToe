@@ -143,13 +143,7 @@ const gameFlow = function( oName, xName){
         
     }
 
-    let resetTheGame = () =>{
-        moves = 0;
-        isThereWinner = false;
-    }
-
-
-    return { playNextMove, resetTheGame };
+    return { playNextMove };
 }
 
 
@@ -245,11 +239,9 @@ let displayController = ( function(){
     restartButton.addEventListener('click', () =>{
         gameBoard.resetTheBoard();
         displayController.changeDomToCurrentBoard();
-        game.resetTheGame();
+        game = gameFlow( oInput.value, xInput.value);
         displayController.updateResults('blank');
     });
 
     return{ changeDomToCurrentBoard , updateResults };
 })(document);
-
-
